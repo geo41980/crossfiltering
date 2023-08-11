@@ -1,12 +1,20 @@
 import streamlit as st
+import time
 
-# To keep session state clean between examples
-import page_freshener
-page_freshener.reset('H')
+# Set the refresh rate in seconds
+refresh_rate = 10
 
-st.title('10 most common explanations on the Streamlit forum')
-st.subheader('Example code')
+# Main app code
+def main():
+    st.title("Auto Refresh Example")
+    st.write("This page will automatically refresh every 10 seconds.")
 
-st.write('This is a collection of code snippets from a [Streamlit Blog]'\
-         '(https://blog.streamlit.io/10-most-common-explanations-on-the-streamlit-forum) '\
-         'post.')
+    # Infinite loop to refresh the page
+    while True:
+        # Add a delay to control the refresh rate
+        time.sleep(refresh_rate)
+        # Rerun the app
+        st.experimental_rerun()
+
+if __name__ == "__main__":
+    main()
